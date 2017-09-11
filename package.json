@@ -9,8 +9,8 @@
   },
   "apps" : [{
     "name" : "Spotify One Hit Wonders Gui",
-    "script" : "serve",
-    "args": "-s build",
+    "script" : "",
+    "args": "",
     "env" : {
       "PORT": "3000"
     }
