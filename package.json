@@ -9,7 +9,7 @@
   },
   "apps" : [{
     "name" : "Spotify One Hit Wonders Gui",
-    "script" : "npm start",
+    "script" : "start",
     "env" : {
       "PORT": "3001"
     }
