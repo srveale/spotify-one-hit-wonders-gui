@@ -9,8 +9,8 @@
   },
   "apps" : [{
     "name" : "Spotify One Hit Wonders Gui",
-    "script" : "npm",
-    "args": "run start",
+    "script" : "serve",
+    "args": "-s build",
     "env" : {
       "PORT": "3000"
     }
@@ -22,7 +22,7 @@
         "ref"  : "origin/master",
         "repo" : "git@github.com:srveale/spotify-one-hit-wonders-gui",
         "path" : "/home/scott/gui",
-        "post-deploy" : "pm2 startOrRestart package.json --env dev",
+        "post-deploy" : "npm install --production && pm2 startOrRestart package.json --env production && serve -s build",
         "env"  : {
           "NODE_ENV": "production"
         }
