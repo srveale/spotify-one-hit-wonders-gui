@@ -7,6 +7,37 @@
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.13"
   },
+  "apps" : [{
+    "name" : "Spotify One Hit Wonders",
+    "script" : "bin/www",
+    "env" : {
+      "PORT": "3001"
+    }
+  }],
+  "deploy" : {
+      "production" : {
+        "user" : "scott",
+        "host" : "scott.tillerdigital.ca",
+        "ref"  : "origin/master",
+        "repo" : "git@github.com:srveale/spotify-one-hit-wonders",
+        "path" : "/home/scott/",
+        "post-deploy" : "pm2 startOrRestart package.json --env dev",
+        "env"  : {
+          "NODE_ENV": "production"
+        }
+      },
+      "staging" : {
+        "user" : "scott",
+        "host" : "scott.tillerdigital.ca",
+        "ref"  : "origin/master",
+        "repo" : "git@github.com:srveale/spotify-one-hit-wonders",
+        "path" : "/home/scott/",
+        "post-deploy" : "pm2 startOrRestart package.json --env dev",
+        "env"  : {
+          "NODE_ENV": "staging"
+        }
+      }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
