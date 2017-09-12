@@ -22,7 +22,7 @@
         "ref"  : "origin/master",
         "repo" : "git@github.com:srveale/spotify-one-hit-wonders-gui",
         "path" : "/home/scott/gui",
-        "post-deploy" : "npm install && npm run build && pm2 serve ./build/static/index.html",
+        "post-deploy" : "npm install && npm run build && pm2 start node_modules/react-scripts/scripts/start.js --name SPOT OHW",
         "env"  : {
           "NODE_ENV": "production"
         }
