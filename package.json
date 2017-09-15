@@ -3,41 +3,44 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "d3": "^4.10.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.13"
   },
-  "apps" : [{
-    "name" : "Spotify One Hit Wonders Gui",
-    "script" : "",
-    "args": "",
-    "env" : {
-      "PORT": "3000"
-    }
-  }],
-  "deploy" : {
-      "production" : {
-        "user" : "scott",
-        "host" : "scott.tillerdigital.ca",
-        "ref"  : "origin/master",
-        "repo" : "git@github.com:srveale/spotify-one-hit-wonders-gui",
-        "path" : "/home/scott/gui",
-        "post-deploy" : "npm install && npm run build && pm2 start node_modules/react-scripts/scripts/start.js --name SPOT-OHW-GUI",
-        "env"  : {
-          "NODE_ENV": "production"
-        }
-      },
-      "staging" : {
-        "user" : "scott",
-        "host" : "scott.tillerdigital.ca",
-        "ref"  : "origin/master",
-        "repo" : "git@github.com:srveale/spotify-one-hit-wonders-gui",
-        "path" : "/home/scott/gui",
-        "post-deploy" : "npm install && pm2 startOrRestart package.json --env dev",
-        "env"  : {
-          "NODE_ENV": "staging"
-        }
+  "apps": [
+    {
+      "name": "Spotify One Hit Wonders Gui",
+      "script": "",
+      "args": "",
+      "env": {
+        "PORT": "3000"
       }
+    }
+  ],
+  "deploy": {
+    "production": {
+      "user": "scott",
+      "host": "scott.tillerdigital.ca",
+      "ref": "origin/master",
+      "repo": "git@github.com:srveale/spotify-one-hit-wonders-gui",
+      "path": "/home/scott/gui",
+      "post-deploy": "npm install && npm run build && pm2 start node_modules/react-scripts/scripts/start.js --name SPOT-OHW-GUI",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "staging": {
+      "user": "scott",
+      "host": "scott.tillerdigital.ca",
+      "ref": "origin/master",
+      "repo": "git@github.com:srveale/spotify-one-hit-wonders-gui",
+      "path": "/home/scott/gui",
+      "post-deploy": "npm install && pm2 startOrRestart package.json --env dev",
+      "env": {
+        "NODE_ENV": "staging"
+      }
+    }
   },
   "scripts": {
     "start": "react-scripts start",
