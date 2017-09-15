@@ -10,7 +10,7 @@ class FitGraph extends Component {
 
   	componentDidMount() {
   		console.log('in component did mount')
-  		fetch('/data')
+  		fetch('/data/artist')
   			.then(res => {
   				console.log('getting response')
   				return res.json();
