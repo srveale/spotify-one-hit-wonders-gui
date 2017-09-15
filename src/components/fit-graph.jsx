@@ -24,10 +24,10 @@ class FitGraph extends Component {
     	    .data(this.props.artistData.popularities)
 
     	chart.enter()
-    		.attr("delay", func(d,i){return 1000*i})
-    		.attr("duration", func(d,i){return 1000*(i+1)})
     		.append('div')
     		.merge(chart)
+    		.transition()
+    		.duration('2000')
     		.style("width", function(d) { return d + "%" })
     	    .text(function(d) { return d; });
     }
