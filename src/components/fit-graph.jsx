@@ -14,17 +14,20 @@ class FitGraph extends Component {
 			.data(this.props.artistData.popularities)
 				.enter()
 			.append("div")
-				.style("width", function(d) { return d * 10 + "px"; })
+				.style("width", function(d) { return d + "%" })
 				.text(function(d) { return d; });
     }
 
-    shouldComponentUpdate(props) {
-      d3.select(".chart")
-        .selectAll("div")
-          .data(this.props.artistData.popularities)
-        .enter().append("div")
-          .style("width", function(d) { return d * 10 + "px"; })
-          .text(function(d) { return d; });
+    componentDidUpdate(prevProps, prevState) {
+    	const chart = d3.select(".chart")
+    		.selectAll("div")
+    	    .data(this.props.artistData.popularities)
+
+    	chart.enter()
+    		.append('div')
+    		.merge(chart)
+    		.style("width", function(d) { return d + "%" })
+    	    .text(function(d) { return d; });
     }
 
     render() {
