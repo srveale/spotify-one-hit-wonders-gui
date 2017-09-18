@@ -9,7 +9,7 @@ class App extends Component {
         this.state = {
             artistName: "",
             artistData: {
-                popularities: [43, 42, 41, 40],
+                popularities: [],
             }
         }
 
