@@ -9,7 +9,7 @@ class App extends Component {
         this.state = {
             artistName: "",
             artistData: {
-                popularities: [],
+                popularities: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             }
         }
 
@@ -28,6 +28,7 @@ class App extends Component {
             })
             .then(artistData => {
                 console.log('popularities', artistData);
+                artistData.artistName = artistName
                 this.setState({ artistData });
             });
     }
