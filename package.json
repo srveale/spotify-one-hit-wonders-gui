@@ -10,7 +10,7 @@
   },
   "apps": [
     {
-      "name": "Spotify One Hit Wonders Gui",
+      "name": "SPOT-OHW-GUI",
       "script": "",
       "args": "",
       "env": {
@@ -21,7 +21,7 @@
   "deploy": {
     "production": {
       "user": "scott",
-      "host": "scott.tillerdigital.ca",
+      "host": "scottveale.ca",
       "ref": "origin/master",
       "repo": "git@github.com:srveale/spotify-one-hit-wonders-gui",
       "path": "/home/scott/gui",
