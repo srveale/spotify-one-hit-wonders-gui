@@ -32,7 +32,7 @@
     },
     "staging": {
       "user": "scott",
-      "host": "scott.tillerdigital.ca",
+      "host": "scottveale.ca",
       "ref": "origin/master",
       "repo": "git@github.com:srveale/spotify-one-hit-wonders-gui",
       "path": "/home/scott/gui",
