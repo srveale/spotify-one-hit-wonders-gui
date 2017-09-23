@@ -50,8 +50,8 @@ class FitGraph extends Component {
 
         g.selectAll(".bar")
             .data([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
-                .enter()
-                .append("rect")
+            .enter()
+            .append("rect")
                 .attr("class", "bar")
                 .attr("x", (d, i) => x(i + 1))
                 .attr("y", (d, i) => y(d) )
@@ -61,16 +61,17 @@ class FitGraph extends Component {
 
     componentWillReceiveProps(nextProps) {
         console.log('in componentWillReceiveProps', nextProps.artistData.artistName)
-        this.setState({ 
+        this.setState({
             artistName: nextProps.artistData.artistName,
             error: nextProps.artistData.error
         });
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('in compononentDidUpdate', this.props.artistData.popularities)
+        console.log('in compononentDidUpdate', this.props.artistData)
         const popularities = this.props.artistData.popularities || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         const svg = d3.select("svg");
+        const tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
         const margin = {top: 20, right: 20, bottom: 30, left: 40};
         const width = svg.attr("width") - margin.left - margin.right;
@@ -82,12 +83,21 @@ class FitGraph extends Component {
         y.domain([0, 100])
 
         svg.select('g').selectAll(".bar")
-            .data(popularities)
+            .data(this.props.artistData.processedTracks)
                 .attr("class", "bar")
                 .attr("x", (d, i) => x(i + 1))
-                .attr("y", (d, i) => y(d) )
+                .attr("y", (d, i) => y(d.popularity) )
                 .attr("width", x.bandwidth())
-                .attr("height", (d) => height - y(d))
+                .attr("height", (d) => height - y(d.popularity))
+                .on("mousemove", function(d){
+                            tooltip
+                              .style("left", d3.event.pageX - 50 + "px")
+                              .style("top", d3.event.pageY - 70 + "px")
+                              .style("display", "inline-block")
+                              .html(d.name);
+                        })
+                .on("mouseout", function(d){ tooltip.style("display", "none");});
+
     }
 
     render() {
