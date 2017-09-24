@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './skeleton.css'
 import FitGraph from './components/fit-graph.jsx'
 
 class App extends Component {
@@ -38,8 +39,9 @@ class App extends Component {
         return (
             <div className="App">
                 <div className="App-header">
-                    <h2>Spotify Artist Track Popularity</h2>
+                    <h2>One Hit Wonders on Spotify</h2>
                 </div>
+                <p> Enter the name of a band/artist to find out if they are a one-hit-wonder </p>
                 <form onSubmit={(e) => this.handleSearch(e)}>
                     <input type="text" id="artistInput" placeholder="Artist name"></input>
                     <button type="submit"> Get Artist Data </button>

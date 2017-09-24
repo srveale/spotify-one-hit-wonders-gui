@@ -57,6 +57,20 @@ class FitGraph extends Component {
                 .attr("y", (d, i) => y(d) )
                 .attr("width", x.bandwidth())
                 .attr("height", (d) => height - y(d))
+
+        g.append("text")
+            .attr("x", width / 2 )
+            .attr("y",  height + margin.top + 7 )
+            .style("text-anchor", "middle")
+            .text("Song");
+
+        g.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - margin.left - 5)
+            .attr("x", 0 - (height / 2))
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Popularity");
     }
 
     componentWillReceiveProps(nextProps) {
@@ -69,7 +83,6 @@ class FitGraph extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         console.log('in compononentDidUpdate', this.props.artistData)
-        const popularities = this.props.artistData.popularities || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         const svg = d3.select("svg");
         const tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
@@ -82,8 +95,10 @@ class FitGraph extends Component {
         x.domain([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
         y.domain([0, 100])
 
+        const processedTracks = this.props.artistData.processedTracks || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
         svg.select('g').selectAll(".bar")
-            .data(this.props.artistData.processedTracks)
+            .data(processedTracks)
                 .attr("class", "bar")
                 .attr("x", (d, i) => x(i + 1))
                 .attr("y", (d, i) => y(d.popularity) )
@@ -103,17 +118,21 @@ class FitGraph extends Component {
     render() {
         const error = this.state.error;
         const artistData = this.props.artistData;
+        console.log('artistData', artistData);
         const artistName = this.state.artistName;
         const ohwFactor = artistData.fitParams ? Math.abs(artistData.fitParams.equation[1]) * 1000 : null;
+        const equationString = artistData.fitParams ? artistData.fitParams.string : ""
+        const isOWH = this.props.artistData.isOWH;
         return (
   			<div>
          		<div className="chart">
           		</div>
           		<svg width="960" height="600" id="bar-chart">
           		</svg>
-                {artistName && <h1> Results for "<strong>{artistName}</strong>" </h1>}
-                {error && <h1> {error} </h1>}
-                {ohwFactor && <h1> One-Hit-Wonder Factor: {ohwFactor} </h1>}
+                {artistName && <h3> Results for "<strong>{artistName}</strong>" </h3>}
+                {error && <h3> {error} </h3>}
+                {ohwFactor && <h3> One-Hit-Wonder Factor: {ohwFactor} </h3>}
+                {equationString && <h3> Best Fit Equation {equationString} </h3>}
   			</div>
   		)
   	}
