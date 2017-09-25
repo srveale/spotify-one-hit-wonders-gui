@@ -122,7 +122,7 @@ class FitGraph extends Component {
         const artistName = this.state.artistName;
         const ohwFactor = artistData.fitParams ? Math.abs(artistData.fitParams.equation[1]) * 1000 : null;
         const equationString = artistData.fitParams ? artistData.fitParams.string : ""
-        const isOHW = this.props.artistData.isOHW;
+        // const isOHW = this.props.artistData.isOHW;
         return (
   			<div>
          		<div className="chart">
