@@ -53,7 +53,10 @@ measureFileSizesBeforeBuild(paths.appBuild)
     return build(previousFileSizes);
   })
   .then(
-    ({ stats, previousFileSizes, warnings }) => {
+    (result) => {
+      const stats = result.stats;
+      const previousFileSizes = result.previousFileSizes;
+      const warnings = result.warnings;
       if (warnings.length) {
         console.log(chalk.yellow('Compiled with warnings.\n'));
         console.log(warnings.join('\n\n'));
