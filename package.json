@@ -45,7 +45,7 @@
   "apps": [
     {
       "name": "SPOT-OHW-GUI",
-      "script": "",
+      "script": "npm start",
       "args": "",
       "env": {
         "PORT": "3000"
@@ -59,7 +59,7 @@
       "ref": "origin/master",
       "repo": "git@github.com:srveale/spotify-one-hit-wonders-gui",
       "path": "/home/scott/gui",
-      "post-deploy": "npm install && pm2 startOrGracefulReload node_modules/react-scripts/scripts/start.js --name SPOT-OHW-GUI",
+      "post-deploy": "npm install && npm start",
       "env": {
         "NODE_ENV": "production"
       }
