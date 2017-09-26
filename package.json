@@ -24,6 +24,7 @@
     "eslint-plugin-react": "7.1.0",
     "extract-text-webpack-plugin": "3.0.0",
     "file-loader": "0.11.2",
+    "file-system": "^2.2.2",
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
@@ -34,6 +35,7 @@
     "react": "^15.6.1",
     "react-dev-utils": "^4.0.1",
     "react-dom": "^15.6.1",
+    "serve": "^6.1.0",
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.4",
     "url-loader": "0.5.9",
@@ -45,7 +47,7 @@
   "apps": [
     {
       "name": "SPOT-OHW-GUI",
-      "script": "npm start",
+      "script": "./scripts/serve.js",
       "args": "",
       "env": {
         "PORT": "3000"
@@ -59,7 +61,7 @@
       "ref": "origin/master",
       "repo": "git@github.com:srveale/spotify-one-hit-wonders-gui",
       "path": "/home/scott/gui",
-      "post-deploy": "npm install && npm start",
+      "post-deploy": "npm install && pm2 startOrGracefulReload package.json",
       "env": {
         "NODE_ENV": "production"
       }
