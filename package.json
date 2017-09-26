@@ -45,7 +45,7 @@
   "apps": [
     {
       "name": "SPOT-OHW-GUI",
-      "script": "serve -s build -p 3000",
+      "script": "./scripts/serve.js",
       "args": "",
       "env": {
         "PORT": "3000"
