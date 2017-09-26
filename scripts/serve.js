@@ -1,5 +1,5 @@
 const serve = require('serve');
 
-serve('../build', {
-  port: 3000
-});
+console.log('serving on port 3000')
+
+serve('../build', { port: 3000 });
