@@ -6,4 +6,4 @@ console.log('it totally should be working')
 console.log('filesystem', process.cwd())
 
 
-const server = serve('../build', { port: 3000 });
+const server = serve('./build', { port: 3000 });
