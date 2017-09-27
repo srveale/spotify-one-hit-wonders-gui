@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import './skeleton.css';
 import FitGraph from './components/fit-graph.jsx';
-import apiURL from '../../api.json';
+import { apiURL } from './api-config.js';
 
 class App extends Component {
 
