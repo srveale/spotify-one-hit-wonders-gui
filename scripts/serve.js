@@ -1,3 +1,4 @@
+console.log('starting serve')
 const serve = require('serve');
 const fs = require('fs');
 
