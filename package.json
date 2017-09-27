@@ -46,7 +46,7 @@
   },
   "apps": [
     {
-      "name": "SPOT-OHW-GUI",
+      "name": "SPOT-GUI",
       "script": "./scripts/serve.js",
       "args": "",
       "env": {
