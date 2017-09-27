@@ -1,3 +1,3 @@
 module.exports = {
-	"url": "scottveale.ca:3001" 
+	"apiURL": "scottveale.ca:3001" 
 }

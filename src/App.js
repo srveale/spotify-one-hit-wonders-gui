@@ -20,6 +20,7 @@ class App extends Component {
     }
 
     handleSearch(e) {
+        console.log('apiURL', apiURL)
         e.preventDefault()
         const artistName = document.getElementById("artistInput").value;
         console.log('getting artist', artistName)
