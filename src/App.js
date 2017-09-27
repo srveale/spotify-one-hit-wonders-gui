@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import './skeleton.css'
-import FitGraph from './components/fit-graph.jsx'
+import './skeleton.css';
+import FitGraph from './components/fit-graph.jsx';
+import apiURL from '../../api.json';
 
 class App extends Component {
 
@@ -23,7 +24,7 @@ class App extends Component {
         const artistName = document.getElementById("artistInput").value;
         console.log('getting artist', artistName)
 
-        fetch(`/data/${artistName}`)
+        fetch(`${apiURL}/data/${artistName}`)
             .then(res => {
                 console.log('getting response')
                 return res.json();
