@@ -61,7 +61,7 @@
       "ref": "origin/master",
       "repo": "git@github.com:srveale/spotify-one-hit-wonders-gui",
       "path": "/home/scott/gui",
-      "post-deploy": "",
+      "post-deploy": "ls",
       "env": {
         "NODE_ENV": "production"
       }
