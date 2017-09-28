@@ -61,7 +61,7 @@
       "ref": "origin/master",
       "repo": "git@github.com:srveale/spotify-one-hit-wonders-gui",
       "path": "/home/scott/gui",
-      "post-deploy": "npm install && pm2 serve build",
+      "post-deploy": "npm install && pm2 serve build 3000",
       "env": {
         "NODE_ENV": "production"
       }
