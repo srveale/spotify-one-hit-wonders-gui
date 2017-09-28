@@ -65,17 +65,6 @@
       "env": {
         "NODE_ENV": "production"
       }
-    },
-    "staging": {
-      "user": "scott",
-      "host": "scottveale.ca",
-      "ref": "origin/master",
-      "repo": "git@github.com:srveale/spotify-one-hit-wonders-gui",
-      "path": "/home/scott/gui",
-      "post-deploy": "npm install && pm2 startOrRestart package.json --env dev",
-      "env": {
-        "NODE_ENV": "staging"
-      }
     }
   },
   "scripts": {
