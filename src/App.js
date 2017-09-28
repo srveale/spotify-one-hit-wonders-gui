@@ -25,7 +25,7 @@ class App extends Component {
         const artistName = document.getElementById("artistInput").value;
         console.log('getting artist', artistName)
 
-        fetch(`${apiURL}/data/${artistName}`)
+        fetch(`/data/${artistName}`)
             .then(res => {
                 console.log('getting response')
                 return res.json();
