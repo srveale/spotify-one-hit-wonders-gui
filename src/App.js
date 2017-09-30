@@ -26,9 +26,9 @@ class App extends Component {
         console.log('getting artist', artistName)
         console.log('fromUrl', `/data/${artistName}`)
 
-        fetch(`/data/${artistName}`)
+        fetch(`/api/data/${artistName}`)
             .then(res => {
-                console.log('getting response')
+                console.log('getting response', res)
                 return res.json();
             })
             .then(artistData => {
