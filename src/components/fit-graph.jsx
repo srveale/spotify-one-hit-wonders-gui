@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import * as _ from 'lodash';
 
 class FitGraph extends Component {
   	constructor (props) {
@@ -124,8 +125,9 @@ class FitGraph extends Component {
         console.log('artistData', artistData);
         const artistName = this.state.artistName;
         const ohwFactor = artistData.fitParams ? Math.abs(artistData.fitParams.equation[1]) * 1000 : null;
-        const equationString = artistData.fitParams ? artistData.fitParams.string : ""
-        // const isOHW = this.props.artistData.isOHW;
+        // const equationString = artistData.fitParams ? artistData.fitParams.string : "";
+        const ohwString = _.get(artistData, 'isOHW.ohwString');
+        // const ohwBool = _.get(artistData, 'isOHW.ohwBool');
         return (
     			<div>
            		<div className="chart">
@@ -133,7 +135,8 @@ class FitGraph extends Component {
                 </svg>
                 {error && <h3> {error} </h3>}
                 {artistName && ohwFactor && <h4> <strong>{artistName}</strong> has a OHW Factor of <h1>{ohwFactor}</h1> </h4>}
-                {artistName && ohwFactor && <h4><a id="more-toggle" href="#more-toggle" onClick={this.toggleMore}>More Info</a></h4>}
+                {artistName && ohwString && <h4> One-hit-wonder status: <strong>{ohwString}</strong></h4>}
+                {artistName && ohwFactor && <h4><a id="more-toggle" href="#more-toggle" onClick={this.toggleMore}>{this.state.moreToggled ? "More Info" : "Less Info"}</a></h4>}
                 {this.state.moreToggled && (
                   <span>
                     <p>Obtaining data from Spotify, this app finds the popularity of an artist's top-10 tracks. </p>
