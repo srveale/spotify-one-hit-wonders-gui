@@ -24,6 +24,7 @@ class App extends Component {
         e.preventDefault()
         const artistName = document.getElementById("artistInput").value;
         console.log('getting artist', artistName)
+        console.log('something changed')
         console.log('fromUrl', `/data/${artistName}`)
 
         fetch(`/api/data/${artistName}`)
