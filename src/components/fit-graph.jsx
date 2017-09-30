@@ -134,9 +134,8 @@ class FitGraph extends Component {
                 <svg width="960" height="600" id="bar-chart">
                 </svg>
                 {error && <h3> {error} </h3>}
-                {artistName && ohwFactor && <h4> <strong>{artistName}</strong> has a OHW Factor of <h1>{ohwFactor}</h1> </h4>}
-                {artistName && ohwString && <h4> One-hit-wonder status: <strong>{ohwString}</strong></h4>}
-                {artistName && ohwFactor && <h4><a id="more-toggle" href="#more-toggle" onClick={this.toggleMore}>{this.state.moreToggled ? "More Info" : "Less Info"}</a></h4>}
+                {artistName && ohwFactor && <h4> <strong>{artistName}</strong> has a OHW Factor of <h1>{ohwFactor}: ({ohwString})</h1> </h4>}
+                {artistName && ohwFactor && <h4><a id="more-toggle" href="#more-toggle" onClick={this.toggleMore}>{this.state.moreToggled ? "Less Info" : "More Info"}</a></h4>}
                 {this.state.moreToggled && (
                   <span>
                     <p>Obtaining data from Spotify, this app finds the popularity of an artist's top-10 tracks. </p>
