@@ -125,7 +125,6 @@ class FitGraph extends Component {
     render() {
         const error = this.state.error;
         const artistData = this.props.artistData;
-        console.log('artistData', artistData);
         const artistName = this.state.artistName;
         const ohwFactor = artistData.fitParams ? Math.abs(artistData.fitParams.equation[1]) * 1000 : null;
         // const equationString = artistData.fitParams ? artistData.fitParams.string : "";
@@ -141,7 +140,7 @@ class FitGraph extends Component {
                 {artistName && ohwFactor && <h4><a id="more-toggle" href="#more-toggle" onClick={this.toggleMore}>{this.state.moreToggled ? "Less Info" : "More Info"}</a></h4>}
                 {this.state.moreToggled && (
                   <span>
-                    <p>Obtaining data from Spotify, this app finds the popularity of an artist's top-10 tracks. </p>
+                    <p>Obtaining data from <a href="https://developer.spotify.com/web-api/">Spotify</a>, this app finds the popularity of an artist's top-10 tracks. </p>
                     <p>Running the data through some <a href="http://www.reddit.com">math</a>, we find out how quickly the popularity of the artist drops after their first hit. </p>
                     <p>An artist is determined to be a One-Hit-Wonder if they have <strong>at least one "hit" (a song over 50 popularity) and an OHW over 100</strong></p>
                     <p>See if you can find the biggest One-Hit-Wonder! You can also try to find the bands with the lowest OHW Factor, meaning their top-10 tracks are all around the same popularity</p>
