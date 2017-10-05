@@ -26,12 +26,10 @@ class FitGraph extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('in compononentDidUpdate', this.props.artistData)
         if (this.state.firstRender) {
-          const viewWidth = Math.min(document.documentElement.clientWidth, window.innerWidth || 0);
+          const viewWidth = document.documentElement.clientWidth < 750 ? document.documentElement.clientWidth : window.innerWidth;
           const viewHeight = Math.min(document.documentElement.clientHeight, window.innerHeight || 0);
-          console.log('viewWidth', viewWidth)
-          console.log('viewHeight', viewHeight)
+
           const graphSVG = document.getElementById("bar-chart");
           graphSVG.setAttribute("height", Math.max(viewHeight / 3, 375));
           graphSVG.setAttribute("width", Math.max(viewWidth / 2, 365));
@@ -98,6 +96,12 @@ class FitGraph extends Component {
           const tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
           const processedTracks = this.props.artistData.processedTracks || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+          console.log(processedTracks)
+          // Put in dummy data if not enough tracks
+          for (let i = 0; i < 11; i++) {
+            processedTracks[i] = processedTracks[i] ? processedTracks[i] : {popularity: 1, name: "N/A"};
+            processedTracks[i].name = processedTracks[i].name ? processedTracks[i].name : "Track name not found";
+          }
 
           svg.select('g').selectAll(".bar")
               .data(processedTracks)
@@ -124,8 +128,8 @@ class FitGraph extends Component {
 
     render() {
         const error = this.state.error;
-        const artistData = this.props.artistData;
-        const artistName = this.state.artistName;
+        const { artistData } = this.props;
+        const { artistName } = artistData;
         const ohwFactor = artistData.fitParams ? Math.abs(artistData.fitParams.equation[1]) * 1000 : null;
         // const equationString = artistData.fitParams ? artistData.fitParams.string : "";
         const ohwString = _.get(artistData, 'isOHW.ohwString');
@@ -136,7 +140,7 @@ class FitGraph extends Component {
                 <svg width="960" height="600" id="bar-chart">
                 </svg>
                 {error && <h3> {error} </h3>}
-                {artistName && ohwFactor && <h4> <strong>{artistName}</strong> has a OHW Factor of <h1><strong>{ohwFactor}</strong> ({ohwString})</h1> </h4>}
+                {artistName && ohwFactor && <h4> OHW Factor for <strong>{artistName}:</strong><h1><strong>{ohwFactor}</strong> <h2>({ohwString})</h2></h1> </h4>}
                 {artistName && ohwFactor && <h4><a id="more-toggle" href="#more-toggle" onClick={this.toggleMore}>{this.state.moreToggled ? "Less Info" : "More Info"}</a></h4>}
                 {this.state.moreToggled && (
                   <span>

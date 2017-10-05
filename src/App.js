@@ -20,12 +20,9 @@ class App extends Component {
     }
 
     handleSearch(e) {
-        console.log('apiURL', apiURL)
         e.preventDefault()
         const artistName = document.getElementById("artistInput").value;
-        console.log('getting artist', artistName)
-        console.log('something changed')
-        console.log('fromUrl', `/data/${artistName}`)
+        document.getElementById('artistInput').value = ""
 
         fetch(`/api/data/${artistName}`)
             .then(res => {
@@ -34,13 +31,11 @@ class App extends Component {
             })
             .then(artistData => {
                 console.log('popularities', artistData);
-                artistData.artistName = artistName
                 this.setState({ artistData, graphPresent: true });
             });
     }
 
     render() {
-        console.log('in app render', this.state.artistData)
         return (
             <div className="App">
                 <div className="App-header" style={{marginTop: this.state.graphPresent ? 0 : document.documentElement.clientWidth / 5}}>

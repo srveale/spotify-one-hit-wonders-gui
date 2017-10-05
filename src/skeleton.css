@@ -152,7 +152,9 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
 }
 
 p {
-  margin-top: 0; }
+  margin-top: 0;
+  margin-left: 5px;
+  margin-right: 5px; }
 
 
 /* Links
@@ -173,7 +175,7 @@ input[type="button"] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: #555;
+  color: white;
   text-align: center;
   font-size: 11px;
   font-weight: 600;
@@ -182,7 +184,7 @@ input[type="button"] {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  background-color: transparent;
+  background-color: #12548A;
   border-radius: 4px;
   border: 1px solid #bbb;
   cursor: pointer;
@@ -197,7 +199,7 @@ button:focus,
 input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
-  color: #333;
+  color: grey;
   border-color: #888;
   outline: 0; }
 .button.button-primary,
@@ -354,7 +356,9 @@ p,
 ul,
 ol,
 form {
-  margin-bottom: 0.5rem; }
+  margin-bottom: 0.5rem;
+  margin-left: 3rem;
+  margin-right: 3rem; }
 
 
 /* Utilities
