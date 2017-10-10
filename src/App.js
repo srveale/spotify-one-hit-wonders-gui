@@ -26,11 +26,9 @@ class App extends Component {
 
         fetch(`/api/data/${artistName}`)
             .then(res => {
-                console.log('getting response', res)
                 return res.json();
             })
             .then(artistData => {
-                console.log('popularities', artistData);
                 this.setState({ artistData, graphPresent: true });
             });
     }

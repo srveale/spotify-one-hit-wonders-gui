@@ -93,7 +93,6 @@ class FitGraph extends Component {
           const tooltip = d3.select("body").append("div").attr("class", "toolTip");
 
           const processedTracks = this.props.artistData.processedTracks || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-          console.log(processedTracks)
           // Put in dummy data if not enough tracks
           for (let i = 0; i < 11; i++) {
             processedTracks[i] = processedTracks[i] ? processedTracks[i] : {popularity: 1, name: "N/A"};
@@ -146,7 +145,7 @@ class FitGraph extends Component {
                   <span>
                     <p>Obtaining data from <a href="https://developer.spotify.com/web-api/">Spotify</a>, this app finds the popularity of an artist's top-10 tracks. </p>
                     <p>Running the data through some <a href="http://www.reddit.com">math</a>, we find out how quickly the popularity of the artist drops after their first hit. </p>
-                    <p>An artist is determined to be a One-Hit-Wonder if they have <strong>at least one "hit" (a song over 50 popularity) and an OHW over 100</strong></p>
+                    <p>An artist is determined to be a One-Hit-Wonder if they have <strong>at least one "hit"</strong> (a song over 50 popularity) and an <strong>OHW over 100</strong></p>
                     <p>See if you can find the biggest One-Hit-Wonder! You can also try to find the bands with the lowest OHW Factor, meaning their top-10 tracks are all around the same popularity</p>
                   </span>
                 )}
