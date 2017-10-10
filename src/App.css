@@ -44,10 +44,14 @@ hr {
   color: white;
 }
 
-#ohwString {
-  display: inline;
+#ohwFactor {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  margin-top: 1px;
+  color: white;
+  display: block;
 }
 
-#ohwFactor {
+#chartTitle {
   display: inline;
 }

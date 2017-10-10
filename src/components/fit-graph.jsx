@@ -14,9 +14,6 @@ class FitGraph extends Component {
       this.toggleMore = this.toggleMore.bind(this);
   	}
 
-  	componentDidMount() {
-    }
-
     componentWillReceiveProps(nextProps) {
         this.setState({
             artistName: nextProps.artistData.artistName,
@@ -136,9 +133,10 @@ class FitGraph extends Component {
     			<div>
            		<div className="chart">
                 {error && <h3> {error} </h3>}
-                {artistName && ohwFactor && <h4> OHW Factor for <strong>{artistName}: </strong><h1 id="ohwFactor"><strong>{ohwFactor}</strong> <h3 id="ohwString">({ohwString})</h3></h1> </h4>}
+                {artistName && ohwFactor && <h4> OHW Factor for <strong>{artistName} </strong> <span id="ohwFactor"><h1><strong>{ohwFactor}</strong></h1> <h3 id="ohwString">({ohwString})</h3></span> </h4>}
                 <br/>
-                {artistName && ohwFactor && <h4> Song popularities of the top tracks for {artistName} (hover/tap to view track name)</h4>}
+                {artistName && ohwFactor && <span><h4 id="chartTitle"> Track popularities for {artistName} </h4>
+                <p>(hover/tap to view track name)</p></span>}
                 <svg width="960" height="600" id="bar-chart"></svg>
                 {artistName && ohwFactor && <h4><a id="more-toggle" href="#more-toggle" onClick={this.toggleMore}>{this.state.moreToggled ? "Less Info" : "More Info"}</a></h4>}
                 {this.state.moreToggled && (
