@@ -43,3 +43,11 @@ button {
 hr {
   color: white;
 }
+
+#ohwString {
+  display: inline;
+}
+
+#ohwFactor {
+  display: inline;
+}

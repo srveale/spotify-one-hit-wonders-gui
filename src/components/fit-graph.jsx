@@ -131,16 +131,15 @@ class FitGraph extends Component {
         const { artistData } = this.props;
         const { artistName } = artistData;
         const ohwFactor = artistData.fitParams ? Math.abs(artistData.fitParams.equation[1]) * 1000 : null;
-        // const equationString = artistData.fitParams ? artistData.fitParams.string : "";
         const ohwString = _.get(artistData, 'isOHW.ohwString');
-        // const ohwBool = _.get(artistData, 'isOHW.ohwBool');
         return (
     			<div>
            		<div className="chart">
-                <svg width="960" height="600" id="bar-chart">
-                </svg>
                 {error && <h3> {error} </h3>}
-                {artistName && ohwFactor && <h4> OHW Factor for <strong>{artistName}:</strong><h1><strong>{ohwFactor}</strong> <h2>({ohwString})</h2></h1> </h4>}
+                {artistName && ohwFactor && <h4> OHW Factor for <strong>{artistName}: </strong><h1 id="ohwFactor"><strong>{ohwFactor}</strong> <h3 id="ohwString">({ohwString})</h3></h1> </h4>}
+                <br/>
+                {artistName && ohwFactor && <h4> Song popularities of the top tracks for {artistName} (hover/tap to view track name)</h4>}
+                <svg width="960" height="600" id="bar-chart"></svg>
                 {artistName && ohwFactor && <h4><a id="more-toggle" href="#more-toggle" onClick={this.toggleMore}>{this.state.moreToggled ? "Less Info" : "More Info"}</a></h4>}
                 {this.state.moreToggled && (
                   <span>
