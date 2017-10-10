@@ -109,14 +109,7 @@ class FitGraph extends Component {
                   .attr("y", (d, i) => y(d.popularity) )
                   .attr("width", x.bandwidth())
                   .attr("height", (d) => height - y(d.popularity))
-                  // .on("mousemove", function(d){
-                  //   tooltip
-                  //     .style("left", d3.event.pageX - 50 + "px")
-                  //     .style("top", d3.event.pageY - 70 + "px")
-                  //     .style("display", "inline-block")
-                  //     .html(d.name);
-                  // })
-                  // .on("mouseout", function(d){ tooltip.style("display", "none");});
+
           svg.select('g').selectAll(".bar")
               .on("mousemove", function(d){
                 tooltip
