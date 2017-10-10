@@ -31,7 +31,7 @@ class FitGraph extends Component {
           graphSVG.setAttribute("height", Math.max(viewHeight / 3, 375));
           graphSVG.setAttribute("width", Math.max(viewWidth / 2, 365));
 
-          const svg = d3.select("svg");
+          const svg = d3.select("svg")
 
           const margin = {top: 20, right: 20, bottom: 30, left: 40};
           const width = svg.attr("width") - margin.left - margin.right;
@@ -102,21 +102,31 @@ class FitGraph extends Component {
 
           svg.select('g').selectAll(".bar")
               .data(processedTracks)
+                  .transition()
+                  .duration(1000)
                   .attr("class", "bar")
                   .attr("x", (d, i) => x(i + 1))
                   .attr("y", (d, i) => y(d.popularity) )
                   .attr("width", x.bandwidth())
                   .attr("height", (d) => height - y(d.popularity))
-                  .on("mousemove", function(d){
-                    tooltip
-                      .style("left", d3.event.pageX - 50 + "px")
-                      .style("top", d3.event.pageY - 70 + "px")
-                      .style("display", "inline-block")
-                      .html(d.name);
-                  })
-                  .on("mouseout", function(d){ tooltip.style("display", "none");});
+                  // .on("mousemove", function(d){
+                  //   tooltip
+                  //     .style("left", d3.event.pageX - 50 + "px")
+                  //     .style("top", d3.event.pageY - 70 + "px")
+                  //     .style("display", "inline-block")
+                  //     .html(d.name);
+                  // })
+                  // .on("mouseout", function(d){ tooltip.style("display", "none");});
+          svg.select('g').selectAll(".bar")
+              .on("mousemove", function(d){
+                tooltip
+                  .style("left", d3.event.pageX - 50 + "px")
+                  .style("top", d3.event.pageY - 70 + "px")
+                  .style("display", "inline-block")
+                  .html(d.name);
+              })
+              .on("mouseout", function(d){ tooltip.style("display", "none");});
         }
-
     }
 
     toggleMore() {
