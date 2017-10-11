@@ -94,10 +94,11 @@ class FitGraph extends Component {
 
           const processedTracks = this.props.artistData.processedTracks || [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
           // Put in dummy data if not enough tracks
-          for (let i = 0; i < 11; i++) {
+          for (let i = 0; i < 10; i++) {
             processedTracks[i] = processedTracks[i] ? processedTracks[i] : {popularity: 1, name: "N/A"};
             processedTracks[i].name = processedTracks[i].name ? processedTracks[i].name : "Track name not found";
           }
+
 
           svg.select('g').selectAll(".bar")
               .data(processedTracks)
@@ -126,21 +127,24 @@ class FitGraph extends Component {
     }
 
     render() {
-        const error = this.state.error;
+        let error = this.state.error;
         const { artistData } = this.props;
+        console.log("artistData", artistData);
         const { artistName } = artistData;
+        if (artistName && _.get(artistData, 'fitParams.equation[1]', null) === null) error = "Corrupt data found for this artist, please try again later"
+        console.log("artistName", artistName);
         const ohwFactor = artistData.fitParams ? Math.abs(artistData.fitParams.equation[1]) * 1000 : null;
         const ohwString = _.get(artistData, 'isOHW.ohwString');
         return (
     			<div>
            		<div className="chart">
                 {error && <h3> {error} </h3>}
-                {artistName && ohwFactor && <h4> OHW Factor for <strong>{artistName} </strong> <span id="ohwFactor"><h1><strong>{ohwFactor}</strong></h1> <h3 id="ohwString">({ohwString})</h3></span> </h4>}
+                {!error && artistName && ohwFactor && <h4> OHW Factor for <strong>{artistName} </strong> <span id="ohwFactor"><h1><strong>{ohwFactor}</strong></h1> <h3 id="ohwString">({ohwString})</h3></span> </h4>}
                 <br/>
-                {artistName && ohwFactor && <span><h4 id="chartTitle"> Track popularities for {artistName} </h4>
+                {!error && artistName && ohwFactor && <span><h4 id="chartTitle"> Track popularities for {artistName} </h4>
                 <p>(hover/tap to view track name)</p></span>}
                 <svg width="960" height="600" id="bar-chart"></svg>
-                {artistName && ohwFactor && <h4><a id="more-toggle" href="#more-toggle" onClick={this.toggleMore}>{this.state.moreToggled ? "Less Info" : "More Info"}</a></h4>}
+                {!error && artistName && ohwFactor && <h4><a id="more-toggle" href="#more-toggle" onClick={this.toggleMore}>{this.state.moreToggled ? "Less Info" : "More Info"}</a></h4>}
                 {this.state.moreToggled && (
                   <span>
                     <p>Obtaining data from <a href="https://developer.spotify.com/web-api/">Spotify</a>, this app finds the popularity of an artist's top-10 tracks. </p>
