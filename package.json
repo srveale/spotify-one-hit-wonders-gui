@@ -115,5 +115,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "serve": "^6.4.8"
   }
 }
