@@ -36,11 +36,13 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <div className="App-header" style={{marginTop: this.state.graphPresent ? 0 : document.documentElement.clientWidth / 5}}>
-                    <h2>One Hit Wonders on Spotify</h2>
-                </div>
+                {!this.state.artistData.fitParams && (
+                    <div className="App-header" style={{marginTop: this.state.graphPresent ? 0 : document.documentElement.clientWidth / 5}}>
+                        <h2>One-Hit-Wonder Calculator</h2>
+                    </div>
+                )}
                 {document.documentElement.clientHeight < 900 && <hr/>}
-                <p> Enter the name of a band/artist to find out if they are a one-hit-wonder </p>
+                <p> Enter a band/artist to find out if they are a one-hit-wonder </p>
                 <form onSubmit={(e) => this.handleSearch(e)}>
                     <input type="text" id="artistInput" placeholder="Artist name"></input>
                     <button type="submit"> Get Artist Data </button>
