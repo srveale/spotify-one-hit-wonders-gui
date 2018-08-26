@@ -24,7 +24,7 @@ class App extends Component {
         const artistName = document.getElementById("artistInput").value;
         document.getElementById('artistInput').value = ""
 
-        fetch(`/api/data/${artistName}`)
+        fetch(`https://spotify-one-hit-wonders.herokuapp.com/api/data/${artistName}`)
             .then(res => {
                 return res.json();
             })
