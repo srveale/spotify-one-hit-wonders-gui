@@ -60,7 +60,7 @@ class FitGraph extends Component {
                 .attr("y", 6)
                 .attr("dy", "0.35em")
                 .attr("text-anchor", "end")
-                .text("Popularity");
+                .text("Popularity (arbitrary units)");
 
           // Bars
           g.selectAll(".bar")
@@ -173,7 +173,7 @@ class FitGraph extends Component {
                 {this.state.moreToggled && (
                   <span>
                     <p>Obtaining data from <a href="https://developer.spotify.com/web-api/">Spotify</a>, this app finds the popularity of an artist's top-ten tracks. </p>
-                    <p>Running the data through some math, we find out how quickly the popularity of the artist drops after their first hit. </p>
+                    <p>Running it through some math, we find out how quickly the popularity of the artist drops after their first hit. </p>
                     <p>An artist is determined to be a One-Hit-Wonder if they have <strong>at least one "hit"</strong> (a song over 50 popularity) and an <strong>OHW over 100</strong></p>
                     <p>See if you can find the biggest One-Hit-Wonder! You can also try to find the bands with the lowest OHW Factor, meaning their top-ten tracks are all around the same popularity</p>
                   </span>
