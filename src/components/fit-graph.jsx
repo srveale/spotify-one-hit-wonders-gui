@@ -133,6 +133,7 @@ class FitGraph extends Component {
         if (artistName && _.get(artistData, 'fitParams.equation[1]', null) === null) error = "Corrupt data found for this artist, please try again later"
         const ohwFactor = artistData.fitParams ? Math.abs(artistData.fitParams.equation[1]) * 1000 : null;
         const ohwString = _.get(artistData, 'isOHW.ohwString');
+        const showDidYouMean = !error && artistName && ohwFactor && secondaryArtists && secondaryArtists.length > 0;
         return (
     			<div>
            		<div className="chart">
@@ -145,7 +146,7 @@ class FitGraph extends Component {
                     </span> 
                   </h4>
                 )}
-                {!error && artistName && ohwFactor && secondaryArtists && secondaryArtists.length && (
+                {showDidYouMean && (
                   <span>
                     <span id="didYouMean"><strong>Did you mean: </strong></span>
                     <span>
