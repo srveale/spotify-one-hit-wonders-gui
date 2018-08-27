@@ -46,10 +46,10 @@ class FitGraph extends Component {
               .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
           // X-Axis
-          g.append("g")
-            .attr("class", "axis axis--x")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x));
+          // g.append("g")
+          //   .attr("class", "axis axis--x")
+          //   .attr("transform", "translate(0," + height + ")")
+          //   .call(d3.axisBottom(x));
 
           // Y-Axis
           g.append("g")
