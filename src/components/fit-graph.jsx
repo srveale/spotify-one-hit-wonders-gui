@@ -129,19 +129,44 @@ class FitGraph extends Component {
     render() {
         let error = this.state.error;
         const { artistData } = this.props;
-        console.log("artistData", artistData);
-        const { artistName } = artistData;
+        const { artistName, secondaryArtists } = artistData;
         if (artistName && _.get(artistData, 'fitParams.equation[1]', null) === null) error = "Corrupt data found for this artist, please try again later"
-        console.log("artistName", artistName);
         const ohwFactor = artistData.fitParams ? Math.abs(artistData.fitParams.equation[1]) * 1000 : null;
         const ohwString = _.get(artistData, 'isOHW.ohwString');
+        console.log('secondaryArtists', secondaryArtists)
         return (
     			<div>
            		<div className="chart">
                 {error && <h3> {error} </h3>}
-                {!error && artistName && ohwFactor && <h4> OHW Factor for <strong>{artistName} </strong> <span id="ohwFactor"><h1><strong>{ohwFactor}</strong></h1> <h3 id="ohwString">({ohwString})</h3></span> </h4>}
-                <br/>
-                {!error && artistName && ohwFactor && <span><h4 id="chartTitle"> Track popularities for {artistName} </h4>
+                {!error && artistName && ohwFactor && (
+                  <h4> OHW Factor for <strong>{artistName} </strong> 
+                    <span id="ohwFactor">
+                      <h1><strong>{ohwFactor}</strong></h1> 
+                      <h3 id="ohwString">({ohwString})</h3>
+                    </span> 
+                  </h4>
+                )}
+                {!error && artistName && ohwFactor && secondaryArtists.length && (
+                  <span>
+                    <span id="didYouMean"><strong>Did you mean: </strong></span>
+                    <span>
+                    <span> | </span>
+                      {secondaryArtists.map((secondaryArtist, i) => {
+                        return (
+                          <span 
+                            key={'secondaryArtist' + i}
+                            className="secondaryArtist"
+                            onClick={(e) => this.props.handleYesIMeant(e, secondaryArtist.id, secondaryArtist.name)}>
+                            {` ${secondaryArtist.name} | `}
+                          </span>
+                        )
+                      })}
+                    </span>
+                    <br />
+                    <br />
+                  </span>
+                )}
+                {!error && artistName && ohwFactor && <span><h4 id="chartTitle"> Top-Ten Track Popularities for {artistName} </h4>
                 <p>(hover/tap to view track name)</p></span>}
                 <svg width="960" height="600" id="bar-chart"></svg>
                 {!error && artistName && ohwFactor && <h4><a id="more-toggle" href="#more-toggle" onClick={this.toggleMore}>{this.state.moreToggled ? "Less Info" : "More Info"}</a></h4>}

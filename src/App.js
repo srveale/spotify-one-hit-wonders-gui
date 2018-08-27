@@ -17,14 +17,27 @@ class App extends Component {
         }
 
         this.handleSearch = this.handleSearch.bind(this);
+        this.handleYesIMeant = this.handleYesIMeant.bind(this);
     }
 
     handleSearch(e) {
-        e.preventDefault()
+        e.preventDefault();
         const artistName = document.getElementById("artistInput").value;
         document.getElementById('artistInput').value = ""
 
-        fetch(`https://spotify-one-hit-wonders.herokuapp.com/api/data/${artistName}`)
+        fetch(`/api/data/${artistName}`)
+        // fetch(`https://spotify-one-hit-wonders.herokuapp.com/api/data/${artistName}`)
+            .then(res => {
+                return res.json();
+            })
+            .then(artistData => {
+                this.setState({ artistData, graphPresent: true });
+            });
+    }
+
+    handleYesIMeant(e, artistId, artistName){
+        e.preventDefault();
+        fetch(`/api/data/artist/${artistId}/${artistName}`)
             .then(res => {
                 return res.json();
             })
@@ -42,12 +55,15 @@ class App extends Component {
                     </div>
                 )}
                 {document.documentElement.clientHeight < 900 && <hr/>}
-                <p> Enter a band/artist to find out if they are a one-hit-wonder </p>
+                {!this.state.artistData.fitParams && <p> Enter a band/artist to find out if they are a one-hit-wonder </p>}
                 <form onSubmit={(e) => this.handleSearch(e)}>
                     <input type="text" id="artistInput" placeholder="Artist name"></input>
                     <button type="submit"> Get Artist Data </button>
                 </form>
-                <FitGraph artistData={this.state.artistData}/>
+                <FitGraph 
+                    artistData={this.state.artistData} 
+                    handleYesIMeant={this.handleYesIMeant}
+                />
             </div>
         );
     }
