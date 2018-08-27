@@ -145,7 +145,7 @@ class FitGraph extends Component {
                     </span> 
                   </h4>
                 )}
-                {!error && artistName && ohwFactor && secondaryArtists.length && (
+                {!error && artistName && ohwFactor && secondaryArtists && secondaryArtists.length && (
                   <span>
                     <span id="didYouMean"><strong>Did you mean: </strong></span>
                     <span>
