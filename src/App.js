@@ -25,8 +25,8 @@ class App extends Component {
         const artistName = document.getElementById("artistInput").value;
         document.getElementById('artistInput').value = ""
 
-        fetch(`/api/data/${artistName}`)
-        // fetch(`https://spotify-one-hit-wonders.herokuapp.com/api/data/${artistName}`)
+        // fetch(`/api/data/${artistName}`)
+        fetch(`https://spotify-one-hit-wonders.herokuapp.com/api/data/${artistName}`)
             .then(res => {
                 return res.json();
             })
@@ -37,7 +37,8 @@ class App extends Component {
 
     handleYesIMeant(e, artistId, artistName){
         e.preventDefault();
-        fetch(`/api/data/artist/${artistId}/${artistName}`)
+        // fetch(`/api/data/artist/${artistId}/${artistName}`)
+        fetch(`https://spotify-one-hit-wonders.herokuapp.com/api/data/artist/${artistId}/${artistName}`)
             .then(res => {
                 return res.json();
             })
